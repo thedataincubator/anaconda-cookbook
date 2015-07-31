@@ -1,7 +1,2 @@
-name             'anaconda'
-maintainer       'YOUR_NAME'
-maintainer_email 'YOUR_EMAIL'
-license          'All rights reserved'
-description      'Installs/Configures anaconda'
-long_description 'Installs/Configures anaconda'
-version          '0.1.0'
+
+name "anaconda"
