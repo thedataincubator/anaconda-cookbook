@@ -1,3 +1,3 @@
 
-name "anaconda"
-version "0.0.1"
+name "conda"
+version "0.0.0"

@@ -8,7 +8,7 @@ file "/etc/profile.d/conda.sh" do
     content "export PATH=/opt/conda/bin:$PATH"
 end
 
-bash "install_anaconda" do
+bash "install_miniconda" do
     cwd Chef::Config[:file_cache_path]
     code <<-EOH
         /bin/bash Miniconda.sh -b -p /opt/conda
