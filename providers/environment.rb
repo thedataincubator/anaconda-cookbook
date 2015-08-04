@@ -30,6 +30,6 @@ end
 
 action :upgrade do
     # Bug workaround for https://github.com/conda/conda/issues/1420
-    `#{conda} install --name #{@new_resource.name} toolz=0.6`
+    `#{conda} install --name #{@new_resource.name} toolz=0.6 --yes`
     `#{conda} env update --name #{@new_resource.name} --file #{@new_resource.path}`
 end
