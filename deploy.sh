@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
   exit 1
 fi
 #version upgrade
-version=`git tag | tail -n 1`
+version=`git log --tags --simplify-by-decoration --pretty='format:%d' | head -n 1 | grep -oP '\d+\.\d+\.\d+'`
 
 
 while getopts ":Mmp" Option
@@ -53,7 +53,6 @@ if [ ! -z $patch ]
 then
   ((a[2]++))
 fi
-echo "this happened"
 
 new_version="${a[0]}.${a[1]}.${a[2]}"
 echo Next Version: $new_version
