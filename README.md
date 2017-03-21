@@ -1,10 +1,7 @@
-# anaconda-cookbook-cookbook
+# conda cookbook
 
-TODO: Enter the cookbook description here.
+This cookbook installs conda via the [miniconda installer](https://conda.io/miniconda.html) and lets you set up / update environments.
 
-## Supported Platforms
-
-TODO: List your supported platforms.
 
 ## Attributes
 
@@ -16,27 +13,41 @@ TODO: List your supported platforms.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['anaconda-cookbook']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['conda']['path']</tt></td>
+    <td>/path/to/where/you/want</td>
+    <td>install directory for all conda files</td>
+    <td><tt>/opt/conda</tt></td>
   </tr>
 </table>
 
 ## Usage
 
-### anaconda-cookbook::default
+### conda::default
 
-Include `anaconda-cookbook` in your node's `run_list`:
+Include `conda` in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[anaconda-cookbook::default]"
+    "recipe[conda::default]"
   ]
 }
 ```
 
-## License and Authors
+This will install conda to the specified path.
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+### conda\_environment resource
+To install environments, you can use the `conda_environment` resource in
+another recipe: 
+```ruby
+conda_environment "new_env" do
+  path Pathname.new("/root/environment.yml")
+  action :create
+end
+```
+`path` attribute points to the location of the `environment.yml` file.
+Actions are one of:
+
+- `:create` (for a new environment)
+- `:upgrade` (for environments that already exist)
+-  `:delete` (to delete an environment)
