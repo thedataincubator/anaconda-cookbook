@@ -1,0 +1,15 @@
+#########################################################
+#
+# Warning: Add dependencies by hand one entry at a time.
+# Do not use `conda list --export` or `pip freeze`
+#
+#########################################################
+
+name: basic_sci
+channels:
+- pkgw  # for OSX py2cairo=1.10.0
+dependencies:
+- numpy
+- pip:
+  - jupyter-client==5.0.0
+  - jupyter-core==4.3.0
