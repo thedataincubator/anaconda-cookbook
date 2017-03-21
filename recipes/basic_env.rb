@@ -6,7 +6,7 @@ cookbook_file "/root/environment.yml" do
   mode "755"
 end
 
-anaconda_environment "root" do
-  path "/root/environment.yml"
+conda_environment "root" do
+  path Pathname.new("/root/environment.yml")
   action :upgrade
 end
