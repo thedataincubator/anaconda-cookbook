@@ -29,13 +29,9 @@ action :delete do
 end
 
 action :upgrade do
-    n = @new_resource.name
-    p = @new_resource.path
-    # Bug workaround for https://github.com/conda/conda/issues/1420
-    bash 'install toolz' do
-      code "#{conda} install --name #{n} toolz=0.6 --yes"
-    end
-    bash 'update conda' do
-      code "#{conda} env update --name #{n} --file #{p}"
+    if not exists
+        Chef::Log::info "#{@new_resource} does not exist - nothing to upgrade"
+    else
+        `#{conda} env update --name #{@new_resource.name} --file #{@new_resource.path}`
     end
 end
