@@ -1,7 +1,7 @@
 remote_file "#{Chef::Config[:file_cache_path]}/Miniconda.sh" do
-  source "https://repo.continuum.io/miniconda/Miniconda-3.10.1-Linux-x86_64.sh"
+  source "https://repo.continuum.io/miniconda/Miniconda2-4.4.10-Linux-x86_64.sh"
   mode "777"
-  checksum "363f56f5608d1552325549e7371fcf460c5ed45484eb300058e3b99c997808b5"
+  checksum "4e4ff02c9256ba22d59a1c1a52c723ca4c4ec28fed3bc3b6da68b9d910fe417c"
 end
 
 file "/etc/profile.d/conda.sh" do
