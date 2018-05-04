@@ -13,6 +13,7 @@ bash "install_miniconda" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
       /bin/bash Miniconda.sh -b -p #{node["conda"]["path"]}
+      /opt/conda/bin/conda update -y conda conda-env
   EOH
   not_if do ::File.exists? "/opt/conda" end
 end
