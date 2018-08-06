@@ -1,7 +1,7 @@
 remote_file "#{Chef::Config[:file_cache_path]}/Miniconda.sh" do
-  source "https://repo.continuum.io/miniconda/Miniconda-3.10.1-Linux-x86_64.sh"
+  source "https://repo.continuum.io/miniconda/Miniconda2-4.5.4-Linux-x86_64.sh"
   mode "777"
-  checksum "363f56f5608d1552325549e7371fcf460c5ed45484eb300058e3b99c997808b5"
+  checksum "77d95c99996495b9e44db3c3b7d7981143d32d5e9a58709c51d35bf695fda67d"
 end
 
 file "/etc/profile.d/conda.sh" do
@@ -13,7 +13,6 @@ bash "install_miniconda" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
       /bin/bash Miniconda.sh -b -p #{node["conda"]["path"]}
-      /opt/conda/bin/conda update -y conda conda-env
   EOH
   not_if do ::File.exists? "/opt/conda" end
 end
